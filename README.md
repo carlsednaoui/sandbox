@@ -1,0 +1,1 @@
+Learn more at [jQuery API](http://api.jquery.com/)
