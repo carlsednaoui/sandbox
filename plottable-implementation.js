@@ -109,6 +109,11 @@ function plotDoubleBarChart(selector) {
   $.get("/data/house.json", function(data) {
     plotHouse.addDataset(new Plottable.Dataset(data));
   });
+
+  window.addEventListener("resize", function() {
+    plotSenate.redraw();
+    plotHouse.redraw();
+  });
 };
 
 
