@@ -122,6 +122,8 @@ function plotHeatmapChart(selector) {
   var timesOfDay = ['12am - 4am', '4am - 8am', '8am - Noon', 'Noon - 4pm', '4pm - 8pm', '8pm - Midnight'];
 
   // TODO: this data should be prepped by python, not looped over here
+  // data comes from here https://github.com/mailcharts/reporter/blob/master/templates/1-company-report/report.jade#L66
+  // https://github.com/mailcharts/reporter/blob/master/test/data/banarepublic-output.json#L83
   var data = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[1,2,2,4,2,0,3],[1,0,0,1,3,4,0],[0,0,0,0,0,0,0],[1,0,0,0,0,0,2]];
   data = data.reduce(function(memo, item, index) {
     var y = index; // 0,1,2
@@ -159,8 +161,6 @@ function plotHeatmapChart(selector) {
     .addDataset(new Plottable.Dataset(data))
     .x(function(d) { return d.x }, xScale)
     .y(function(d) { return d.y }, yScale)
-    // .x(function(d) { return d.dayOfWeek }, xScale)
-    // .y(function(d) { return d.timeOfDay }, yScale)
     .attr("fill", function(d) { return d.val; }, colorScale)
     .attr("stroke", "#fff")
     .attr("stroke-width", 2);
