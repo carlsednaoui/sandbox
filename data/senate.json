@@ -1,0 +1,488 @@
+[
+    {
+        "start_year": 1855,
+        "end_year": 1857,
+        "democrats": 42,
+        "republicans": 15
+    },
+    {
+        "start_year": 1857,
+        "end_year": 1859,
+        "democrats": 39,
+        "republicans": 20
+    },
+    {
+        "start_year": 1859,
+        "end_year": 1861,
+        "democrats": 38,
+        "republicans": 26
+    },
+    {
+        "start_year": 1861,
+        "end_year": 1863,
+        "democrats": 11,
+        "republicans": 31
+    },
+    {
+        "start_year": 1863,
+        "end_year": 1865,
+        "democrats": 12,
+        "republicans": 39
+    },
+    {
+        "start_year": 1865,
+        "end_year": 1867,
+        "democrats": 10,
+        "republicans": 42
+    },
+    {
+        "start_year": 1867,
+        "end_year": 1869,
+        "democrats": 11,
+        "republicans": 42
+    },
+    {
+        "start_year": 1869,
+        "end_year": 1871,
+        "democrats": 11,
+        "republicans": 61
+    },
+    {
+        "start_year": 1871,
+        "end_year": 1873,
+        "democrats": 17,
+        "republicans": 57
+    },
+    {
+        "start_year": 1873,
+        "end_year": 1875,
+        "democrats": 19,
+        "republicans": 54
+    },
+    {
+        "start_year": 1875,
+        "end_year": 1877,
+        "democrats": 29,
+        "republicans": 46
+    },
+    {
+        "start_year": 1877,
+        "end_year": 1879,
+        "democrats": 36,
+        "republicans": 39
+    },
+    {
+        "start_year": 1879,
+        "end_year": 1881,
+        "democrats": 43,
+        "republicans": 33
+    },
+    {
+        "start_year": 1881,
+        "end_year": 1883,
+        "democrats": 37,
+        "republicans": 37
+    },
+    {
+        "start_year": 1883,
+        "end_year": 1885,
+        "democrats": 36,
+        "republicans": 40
+    },
+    {
+        "start_year": 1885,
+        "end_year": 1887,
+        "democrats": 34,
+        "republicans": 41
+    },
+    {
+        "start_year": 1887,
+        "end_year": 1889,
+        "democrats": 37,
+        "republicans": 39
+    },
+    {
+        "start_year": 1889,
+        "end_year": 1891,
+        "democrats": 37,
+        "republicans": 47
+    },
+    {
+        "start_year": 1891,
+        "end_year": 1893,
+        "democrats": 39,
+        "republicans": 47
+    },
+    {
+        "start_year": 1893,
+        "end_year": 1895,
+        "democrats": 44,
+        "republicans": 38
+    },
+    {
+        "start_year": 1895,
+        "end_year": 1897,
+        "democrats": 39,
+        "republicans": 44
+    },
+    {
+        "start_year": 1897,
+        "end_year": 1899,
+        "democrats": 34,
+        "republicans": 46
+    },
+    {
+        "start_year": 1899,
+        "end_year": 1901,
+        "democrats": 26,
+        "republicans": 53
+    },
+    {
+        "start_year": 1901,
+        "end_year": 1903,
+        "democrats": 29,
+        "republicans": 56
+    },
+    {
+        "start_year": 1903,
+        "end_year": 1905,
+        "democrats": 32,
+        "republicans": 58
+    },
+    {
+        "start_year": 1905,
+        "end_year": 1907,
+        "democrats": 32,
+        "republicans": 58
+    },
+    {
+        "start_year": 1907,
+        "end_year": 1909,
+        "democrats": 29,
+        "republicans": 61
+    },
+    {
+        "start_year": 1909,
+        "end_year": 1911,
+        "democrats": 32,
+        "republicans": 59
+    },
+    {
+        "start_year": 1911,
+        "end_year": 1913,
+        "democrats": 42,
+        "republicans": 49
+    },
+    {
+        "start_year": 1913,
+        "end_year": 1915,
+        "democrats": 51,
+        "republicans": 44
+    },
+    {
+        "start_year": 1915,
+        "end_year": 1917,
+        "democrats": 56,
+        "republicans": 39
+    },
+    {
+        "start_year": 1917,
+        "end_year": 1919,
+        "democrats": 53,
+        "republicans": 42
+    },
+    {
+        "start_year": 1919,
+        "end_year": 1921,
+        "democrats": 47,
+        "republicans": 48
+    },
+    {
+        "start_year": 1921,
+        "end_year": 1923,
+        "democrats": 37,
+        "republicans": 59
+    },
+    {
+        "start_year": 1923,
+        "end_year": 1925,
+        "democrats": 43,
+        "republicans": 51
+    },
+    {
+        "start_year": 1925,
+        "end_year": 1927,
+        "democrats": 40,
+        "republicans": 54
+    },
+    {
+        "start_year": 1927,
+        "end_year": 1929,
+        "democrats": 47,
+        "republicans": 48
+    },
+    {
+        "start_year": 1929,
+        "end_year": 1931,
+        "democrats": 39,
+        "republicans": 56
+    },
+    {
+        "start_year": 1931,
+        "end_year": 1933,
+        "democrats": 47,
+        "republicans": 48
+    },
+    {
+        "start_year": 1933,
+        "end_year": 1935,
+        "democrats": 59,
+        "republicans": 36
+    },
+    {
+        "start_year": 1935,
+        "end_year": 1937,
+        "democrats": 69,
+        "republicans": 25
+    },
+    {
+        "start_year": 1937,
+        "end_year": 1939,
+        "democrats": 75,
+        "republicans": 17
+    },
+    {
+        "start_year": 1939,
+        "end_year": 1941,
+        "democrats": 69,
+        "republicans": 23
+    },
+    {
+        "start_year": 1941,
+        "end_year": 1943,
+        "democrats": 66,
+        "republicans": 28
+    },
+    {
+        "start_year": 1943,
+        "end_year": 1945,
+        "democrats": 57,
+        "republicans": 38
+    },
+    {
+        "start_year": 1945,
+        "end_year": 1947,
+        "democrats": 57,
+        "republicans": 38
+    },
+    {
+        "start_year": 1947,
+        "end_year": 1949,
+        "democrats": 45,
+        "republicans": 51
+    },
+    {
+        "start_year": 1949,
+        "end_year": 1951,
+        "democrats": 54,
+        "republicans": 42
+    },
+    {
+        "start_year": 1951,
+        "end_year": 1953,
+        "democrats": 48,
+        "republicans": 47
+    },
+    {
+        "start_year": 1953,
+        "end_year": 1955,
+        "democrats": 46,
+        "republicans": 48
+    },
+    {
+        "start_year": 1955,
+        "end_year": 1957,
+        "democrats": 48,
+        "republicans": 47
+    },
+    {
+        "start_year": 1957,
+        "end_year": 1959,
+        "democrats": 49,
+        "republicans": 47
+    },
+    {
+        "start_year": 1959,
+        "end_year": 1961,
+        "democrats": 64,
+        "republicans": 34
+    },
+    {
+        "start_year": 1961,
+        "end_year": 1963,
+        "democrats": 64,
+        "republicans": 36
+    },
+    {
+        "start_year": 1963,
+        "end_year": 1965,
+        "democrats": 67,
+        "republicans": 33
+    },
+    {
+        "start_year": 1965,
+        "end_year": 1967,
+        "democrats": 68,
+        "republicans": 32
+    },
+    {
+        "start_year": 1967,
+        "end_year": 1969,
+        "democrats": 64,
+        "republicans": 36
+    },
+    {
+        "start_year": 1969,
+        "end_year": 1971,
+        "democrats": 58,
+        "republicans": 42
+    },
+    {
+        "start_year": 1971,
+        "end_year": 1973,
+        "democrats": 54,
+        "republicans": 44
+    },
+    {
+        "start_year": 1973,
+        "end_year": 1975,
+        "democrats": 56,
+        "republicans": 42
+    },
+    {
+        "start_year": 1975,
+        "end_year": 1977,
+        "democrats": 61,
+        "republicans": 37
+    },
+    {
+        "start_year": 1977,
+        "end_year": 1979,
+        "democrats": 61,
+        "republicans": 38
+    },
+    {
+        "start_year": 1979,
+        "end_year": 1981,
+        "democrats": 58,
+        "republicans": 41
+    },
+    {
+        "start_year": 1981,
+        "end_year": 1983,
+        "democrats": 46,
+        "republicans": 53
+    },
+    {
+        "start_year": 1983,
+        "end_year": 1985,
+        "democrats": 46,
+        "republicans": 54
+    },
+    {
+        "start_year": 1985,
+        "end_year": 1987,
+        "democrats": 47,
+        "republicans": 53
+    },
+    {
+        "start_year": 1987,
+        "end_year": 1989,
+        "democrats": 55,
+        "republicans": 45
+    },
+    {
+        "start_year": 1989,
+        "end_year": 1991,
+        "democrats": 55,
+        "republicans": 45
+    },
+    {
+        "start_year": 1991,
+        "end_year": 1993,
+        "democrats": 56,
+        "republicans": 44
+    },
+    {
+        "start_year": 1993,
+        "end_year": 1995,
+        "democrats": 57,
+        "republicans": 43
+    },
+    {
+        "start_year": 1995,
+        "end_year": 1997,
+        "democrats": 48,
+        "republicans": 52
+    },
+    {
+        "start_year": 1997,
+        "end_year": 1999,
+        "democrats": 45,
+        "republicans": 55
+    },
+    {
+        "start_year": 1999,
+        "end_year": 2001,
+        "democrats": 45,
+        "republicans": 55
+    },
+    {
+        "start_year": 2001,
+        "end_year": 2003,
+        "democrats": 50,
+        "republicans": 50
+    },
+    {
+        "start_year": 2003,
+        "end_year": 2005,
+        "democrats": 48,
+        "republicans": 51
+    },
+    {
+        "start_year": 2005,
+        "end_year": 2007,
+        "democrats": 44,
+        "republicans": 55
+    },
+    {
+        "start_year": 2007,
+        "end_year": 2009,
+        "democrats": 49,
+        "republicans": 49
+    },
+    {
+        "start_year": 2009,
+        "end_year": 2011,
+        "democrats": 57,
+        "republicans": 41
+    },
+    {
+        "start_year": 2011,
+        "end_year": 2013,
+        "democrats": 51,
+        "republicans": 47
+    },
+    {
+        "start_year": 2013,
+        "end_year": 2015,
+        "democrats": 54,
+        "republicans": 45
+    },
+    {
+        "start_year": 2015,
+        "end_year": 2017,
+        "democrats": 44,
+        "republicans": 54
+    }
+]
