@@ -117,7 +117,69 @@ function plotDoubleBarChart(selector) {
 };
 
 
+function plotHeatmapChart(selector) {
+  var daysOfWeek = ['Monday', 'Tueday', 'Wedday', 'Thuday', 'Friday', 'Satday', 'Sunday'];
+  var timesOfDay = ['12am - 4am', '4am - 8am', '8am - Noon', 'Noon - 4pm', '4pm - 8pm', '8pm - Midnight'];
+
+  // TODO: this data should be prepped by python, not looped over here
+  var data = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[1,2,2,4,2,0,3],[1,0,0,1,3,4,0],[0,0,0,0,0,0,0],[1,0,0,0,0,0,2]];
+  data = data.reduce(function(memo, item, index) {
+    var y = index; // 0,1,2
+    item.reduce(function(ignore, val, index) {
+      var x = index;
+      var dayOfWeek = daysOfWeek[Math.floor(Math.random()*daysOfWeek.length)];
+      var timeOfDay = timesOfDay[Math.floor(Math.random()*timesOfDay.length)];
+      memo.push({ x: dayOfWeek, y: timeOfDay, val: val });
+    });
+    return memo;
+  }, []);
+
+  // this object should look like this
+  /* {
+    xScaleDomain: ['Monday', 'Tueday', 'Wedday', 'Thuday', 'Friday', 'Satday', 'Sunday'];
+    yScaleDomain: ['12am - 4am', '4am - 8am', '8am - Noon', 'Noon - 4pm', '4pm - 8pm', '8pm - Midnight'];
+    data: [
+      { x: SOME_X_SCALE_VAL, y: SOME_Y_SCALE_VAL, val: COUNT_OF_EMAILS }
+    ]
+  }*/
+
+  var xScale = new Plottable.Scales.Category();
+  xScale.domain(daysOfWeek);
+
+  var yScale = new Plottable.Scales.Category();
+  yScale.domain(timesOfDay);
+
+  var xAxis = new Plottable.Axes.Category(xScale, "bottom");
+  var yAxis = new Plottable.Axes.Category(yScale, "left");
+
+  var colorScale = new Plottable.Scales.InterpolatedColor();
+  colorScale.range(["#F5F5F5", "#BFF0D3", "#1FCE6D"]);
+
+  var plot = new Plottable.Plots.Rectangle()
+    .addDataset(new Plottable.Dataset(data))
+    .x(function(d) { return d.x }, xScale)
+    .y(function(d) { return d.y }, yScale)
+    // .x(function(d) { return d.dayOfWeek }, xScale)
+    // .y(function(d) { return d.timeOfDay }, yScale)
+    .attr("fill", function(d) { return d.val; }, colorScale)
+    .attr("stroke", "#fff")
+    .attr("stroke-width", 2);
+
+  var labelY = new Plottable.Components.AxisLabel('Time of day', -90);
+  var labelX = new Plottable.Components.AxisLabel('Day of week', 0);
+  
+  var table = new Plottable.Components.Table([
+    [labelY, yAxis, plot],
+    [null, null, xAxis],
+    [null, null, labelX]
+  ]);
+
+  table.renderTo(selector);
+};
+
+
 // Render charts
 plotLineChart('svg#line-chart');
 plotScatterChart('svg#scatterplot-chart');
 plotDoubleBarChart('svg#double-bar-chart');
+plotHeatmapChart('svg#heatmap-chart');
