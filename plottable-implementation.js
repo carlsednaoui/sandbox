@@ -174,6 +174,65 @@ function plotHeatmapChart(selector) {
     [null, null, labelX]
   ]);
 
+  // uncomment this to add a legend
+  // var legend = new Plottable.Components.InterpolatedColorLegend(colorScale);
+  // legend.xAlignment("center");
+  // legend.yAlignment("center");
+  // legend.orientation('right')
+
+  // var table = new Plottable.Components.Table([
+  //   [labelY, yAxis, plot, legend],
+  //   [null, null, xAxis, null],
+  //   [null, null, labelX, null]
+  // ]);
+
+  table.renderTo(selector);
+};
+
+
+function plotAreaChart(selector) {
+  // data needs to be inside an array of objects
+  // the x value should be the email volume
+  // the y value should be the time bucket
+  var data = [
+    { x: "Midnight - 4am", y: 1},
+    { x: "4am - 8am", y: 0},
+    { x: "8am - Noon", y: 14},
+    { x: "Noon - 4pm", y: 9},
+    { x: "4pm - 8pm", y: 0},
+    { x: "8pm - Midnight", y: 3}
+  ];
+
+  var hourBuckets = ["Midnight - 4am", "4am - 8am", "8am - Noon", "Noon - 4pm", "4pm - 8pm", "8pm - Midnight"];
+
+  var xScale = new Plottable.Scales.Category();
+  xScale.domain(hourBuckets);
+
+  var yScale = new Plottable.Scales.Linear();
+  var xAxis = new Plottable.Axes.Category(xScale, 'bottom');
+  var yAxis = new Plottable.Axes.Numeric(yScale, 'left');
+
+  // Setting the outer padding
+  xScale.outerPadding(0);
+  xScale.innerPadding(10000);
+
+  var plot = new Plottable.Plots.Area()
+    .addDataset(new Plottable.Dataset(data))
+    .x(function(d) { return d.x; }, xScale)
+    .y(function(d) { return d.y; }, yScale);
+
+  // Setting the interpolator to make the lines smoother
+  plot.interpolator("basis");
+
+  var labelY = new Plottable.Components.AxisLabel('Email volume', -90);
+  var labelX = new Plottable.Components.AxisLabel('Time of day', 0);
+
+  var table = new Plottable.Components.Table([
+    [labelY, yAxis, plot],
+    [null, null, xAxis],
+    [null, null, labelX]
+  ]);
+
   table.renderTo(selector);
 };
 
@@ -183,3 +242,4 @@ plotLineChart('svg#line-chart');
 plotScatterChart('svg#scatterplot-chart');
 plotDoubleBarChart('svg#double-bar-chart');
 plotHeatmapChart('svg#heatmap-chart');
+plotAreaChart('svg#area-chart');
