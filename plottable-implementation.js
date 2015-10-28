@@ -236,6 +236,75 @@ function plotAreaChart(selector) {
   table.renderTo(selector);
 };
 
+function plotPieChart(selector) {
+  // data needs to be in an array
+  // percentages need to be rounded off to the nearest full digit (no decimals)
+
+  var data = [
+    { "day": "Monday",
+      "total": 10,
+      "percent": 11,
+      "color": "#1DCE6D"
+    },
+    { "day": "Tuesday",
+      "total": 4,
+      "percent": 7,
+      "color": "#2C83D1"
+    },
+    { "day": "Wednesday",
+      "total": 6,
+      "percent": 7,
+      "color": "#00D3C5"
+    },
+    { "day": "Thursday",
+      "total": 1,
+      "percent": 19,
+      "color": "#A864C1"
+    },
+    { "day": "Friday",
+      "total": 0,
+      "percent": 19,
+      "color": "#D19675"
+    },
+    { "day": "Saturday",
+      "total": 4,
+      "percent": 15,
+      "color": "#EA492B"
+    },
+    { "day": "Sunday",
+      "total": 5,
+      "percent": 19,
+      "color": "#EF923C"
+    }
+  ];
+
+  var scale = new Plottable.Scales.Linear();
+  var plot = new Plottable.Plots.Pie()
+    .addDataset(new Plottable.Dataset(data))
+    .sectorValue(function(d) { return d.percent; }, scale)
+    .attr("fill", function(d) { return d.color; })
+    .innerRadius(80)
+    .labelFormatter(function(d) { return d + '%'; })
+    .labelsEnabled(true);
+
+  // legend
+  colors = ["#1DCE6D", "#2C83D1", "#00D3C5", "#A864C1", "#D19675", "#EA492B", "#EF923C"];
+  var colorScale = new Plottable.Scales.Color().range(colors);
+  var legend = new Plottable.Components.Legend(colorScale);
+  colorScale.domain(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]);
+  legend.xAlignment("center");
+  legend.yAlignment("center");
+
+  var squareFactory = Plottable.SymbolFactories.square();
+  legend.symbol(function(d) { return squareFactory; });
+
+  var table = new Plottable.Components.Table([
+    [plot, legend]
+  ]);
+
+  table.renderTo(selector);
+};
+
 
 // Render charts
 plotLineChart('svg#line-chart');
@@ -243,3 +312,4 @@ plotScatterChart('svg#scatterplot-chart');
 plotDoubleBarChart('svg#double-bar-chart');
 plotHeatmapChart('svg#heatmap-chart');
 plotAreaChart('svg#area-chart');
+plotPieChart('svg#pie-chart');

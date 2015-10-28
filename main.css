@@ -3,3 +3,7 @@ body {
   color: salmon;
   padding: 40px;
 }
+
+svg {
+  margin: 100px 0;
+}
