@@ -305,6 +305,47 @@ function plotPieChart(selector) {
   table.renderTo(selector);
 };
 
+function plotEmailVolumeOverTime(selector) {
+  var data = [
+    { x: "July 1", y: 10},
+    { x: "July 15", y: 13},
+    { x: "August 1", y: 10},
+    { x: "August 15", y: 9}
+  ];
+
+  var hourBuckets = ["July 1", "July 15", "August 1", "August 15"];
+
+  var xScale = new Plottable.Scales.Category();
+  xScale.domain(hourBuckets);
+
+  var yScale = new Plottable.Scales.Linear();
+  var xAxis = new Plottable.Axes.Category(xScale, 'bottom');
+  var yAxis = new Plottable.Axes.Numeric(yScale, 'left');
+
+  // Setting the outer padding
+  xScale.outerPadding(0);
+  xScale.innerPadding(10000);
+
+  var plot = new Plottable.Plots.Area()
+    .addDataset(new Plottable.Dataset(data))
+    .x(function(d) { return d.x; }, xScale)
+    .y(function(d) { return d.y; }, yScale);
+
+  // Setting the interpolator to make the lines smoother
+  plot.interpolator("basis");
+
+  var labelY = new Plottable.Components.AxisLabel('Email volume', -90);
+  var labelX = new Plottable.Components.AxisLabel('Time of day', 0);
+
+  var table = new Plottable.Components.Table([
+    [labelY, yAxis, plot],
+    [null, null, xAxis],
+    [null, null, labelX]
+  ]);
+
+  table.renderTo(selector);
+};
+
 
 // Render charts
 plotLineChart('svg#line-chart');
@@ -313,3 +354,4 @@ plotDoubleBarChart('svg#double-bar-chart');
 plotHeatmapChart('svg#heatmap-chart');
 plotAreaChart('svg#area-chart');
 plotPieChart('svg#pie-chart');
+plotEmailVolumeOverTime("svg#email-volume-over-time-chart");
