@@ -222,18 +222,47 @@ function plotAreaChart(selector) {
     .y(function(d) { return d.y; }, yScale);
 
   // Setting the interpolator to make the lines smoother
-  plot.interpolator("basis");
+  // plot.interpolator("basis");
 
   var labelY = new Plottable.Components.AxisLabel('Email volume', -90);
   var labelX = new Plottable.Components.AxisLabel('Time of day', 0);
 
+  var sPlot = new Plottable.Plots.Scatter()
+     .addDataset(new Plottable.Dataset(data))
+     .x(function(d) { return d.x; }, xScale)
+     .y(function(d) { return d.y; }, yScale);
+
+  var group = new Plottable.Components.Group([plot, sPlot]);
+
   var table = new Plottable.Components.Table([
-    [labelY, yAxis, plot],
+    [labelY, yAxis, group],
     [null, null, xAxis],
     [null, null, labelX]
   ]);
 
   table.renderTo(selector);
+  data.forEach(function(dataPoint, index) {
+    var label = sPlot.foreground().append("text");
+    var anchor = 'middle'; 
+    var offset = 0;
+    if (index === 0) { 
+      anchor = 'right';
+      offset = 1;
+    }
+    else if (index === data.length - 1) {
+      offset = -1;
+      anchor = 'left';
+    }
+    label.attr({
+      "text-anchor": anchor,
+      "font-family": "monospace",
+      "dx": offset + "em", //use if you want to offset x
+      "dy": "-1em", //offset y relative to text-anchor,
+      "x": xScale.scale(dataPoint.x),
+      "y": yScale.scale(dataPoint.y)
+    });
+    label.text(dataPoint.y);
+  });
 };
 
 function plotPieChart(selector) {
@@ -332,7 +361,7 @@ function plotEmailVolumeOverTime(selector) {
     .y(function(d) { return d.y; }, yScale);
 
   // Setting the interpolator to make the lines smoother
-  plot.interpolator("basis");
+  // plot.interpolator("basis");
 
   var labelY = new Plottable.Components.AxisLabel('Email volume', -90);
   var labelX = new Plottable.Components.AxisLabel('Time of day', 0);
