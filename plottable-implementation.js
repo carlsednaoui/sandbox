@@ -168,23 +168,23 @@ function plotHeatmapChart(selector) {
   var labelY = new Plottable.Components.AxisLabel('Time of day', -90);
   var labelX = new Plottable.Components.AxisLabel('Day of week', 0);
   
-  var table = new Plottable.Components.Table([
-    [labelY, yAxis, plot],
-    [null, null, xAxis],
-    [null, null, labelX]
-  ]);
+  // var table = new Plottable.Components.Table([
+  //   [labelY, yAxis, plot],
+  //   [null, null, xAxis],
+  //   [null, null, labelX]
+  // ]);
 
   // uncomment this to add a legend
-  // var legend = new Plottable.Components.InterpolatedColorLegend(colorScale);
-  // legend.xAlignment("center");
-  // legend.yAlignment("center");
-  // legend.orientation('right')
+  var legend = new Plottable.Components.InterpolatedColorLegend(colorScale);
+  legend.xAlignment("center");
+  legend.yAlignment("center");
+  legend.orientation('right')
 
-  // var table = new Plottable.Components.Table([
-  //   [labelY, yAxis, plot, legend],
-  //   [null, null, xAxis, null],
-  //   [null, null, labelX, null]
-  // ]);
+  var table = new Plottable.Components.Table([
+    [labelY, yAxis, plot, legend],
+    [null, null, xAxis, null],
+    [null, null, labelX, null]
+  ]);
 
   table.renderTo(selector);
 };
