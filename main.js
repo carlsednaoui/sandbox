@@ -49,7 +49,7 @@ var startDate;
 
 
 // get the data and generate the calendar events
-$.getJSON('/data/mc-data-for-calendar-report.json', function (data) {
+$.getJSON('./data/mc-data-for-calendar-report.json', function (data) {
   
   $.each(data, function(i, el) {
 
