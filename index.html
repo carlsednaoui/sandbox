@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="pure.css">
     <link rel="stylesheet" href="fullcalendar.min.css">
     <link rel="stylesheet" href="qtip.min.css">
+    <link rel="stylesheet" href="main.css">
     <script src="jquery.js"></script>
     <title>Carl's Sandbox</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,154 @@
 
   <body>
     <div id="calendar"></div>
+
+    <!-- built following this: http://www.w3.org/WAI/tutorials/tables/irregular/ -->
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Week</th>
+          <th scope="col">Day</th>
+          <th scope="col">Company A</th>
+          <th scope="col">Company B</th>
+          <th scope="col">Company C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th rowspan="7" scope="rowgroup">Week 1</th>
+          <th scope="row">M</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">T</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">W</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">T</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">F</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">S</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">S</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th rowspan="7" scope="rowgroup">Week 2</th>
+          <th scope="row">M</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">T</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">W</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">T</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">F</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">S</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">S</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th rowspan="7" scope="rowgroup">Week 3</th>
+          <th scope="row">M</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">T</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">W</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">T</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">F</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">S</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <th scope="row">S</th>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
 
     <script src="moment.min.js"></script>
     <script src="qtip.min.js"></script>

@@ -6,7 +6,6 @@ console.log('sandbox is working!');
 
 // initialize fullcalendar
 $('#calendar').fullCalendar({
-
   // open email on click
   eventClick: function(event) {
     if (event.url) {
@@ -32,7 +31,10 @@ $('#calendar').fullCalendar({
     element.qtip({
       content: event.title,
       style: {
-        classes: 'qtip-dark qtip-rounded'
+        classes: 'qtip-dark qtip-rounded custom-qtip-styles'
+      },
+      position: {
+        target: 'mouse'
       }
     });
 
@@ -46,13 +48,12 @@ $('#calendar').fullCalendar({
 var colors = ['#1DCE6D', '#2C83D1', '#00D3C5', '#A864C1', '#D19675'];
 var companyNames = [];
 var startDate;
-
+var companiesTable = [];
 
 // get the data and generate the calendar events
 $.getJSON('/data/mc-data-for-calendar-report.json', function (data) {
   
   $.each(data, function(i, el) {
-
     // generate company list
     if ($.inArray(el.companyName, companyNames) == -1) {
       companyNames.push(el.companyName);
@@ -68,12 +69,11 @@ $.getJSON('/data/mc-data-for-calendar-report.json', function (data) {
   });
 
   $.each(data, function(i, email) {
-
     // generate all events
     // we should consider passing these in as an array directly from the munger
     // http://fullcalendar.io/docs/event_data/events_array/
     $('#calendar').fullCalendar('renderEvent', {
-      title: email.subject + ' - ' + email.companyName,
+      title: email.subject + ' - ' + email.companyName + ' - Sent at: ' + moment(email.sentAt).format('h:mma'),
       start: moment(email.sentAt),
       end: moment(email.sentAt).add('30', 'minutes'),
       url: 'http://www.mailcharts.com/emails?guid=' + email.guid,
@@ -84,3 +84,17 @@ $.getJSON('/data/mc-data-for-calendar-report.json', function (data) {
   // initialize at the right date
   $('#calendar').fullCalendar('gotoDate', moment(startDate));
 });
+
+
+var dataStructureForTable = {
+  headers: [
+    'Week',
+    'Day',
+    'Company A'
+    , 'Company B'
+    , 'Company C'
+  ]
+  , data: [
+
+  ]
+};
