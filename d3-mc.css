@@ -1,0 +1,29 @@
+/* custom D3 styles for MC charts */
+
+.bar-chart rect {
+  fill: #66C376;
+}
+
+.bar-chart text {
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.label {
+  fill: #8b8b8b;
+}
+
+.label text {
+  font-size: 18px;
+}

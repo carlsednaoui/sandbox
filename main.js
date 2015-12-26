@@ -210,10 +210,10 @@ function basicBarChart(selector) {
     })
   ;
 }
-basicBarChart(".bar-chart-1");
+basicBarChart(".simple-bar-chart");
 
 
-function barChartWithLabels(selector) {
+function barChartWithAxis(selector) {
   var margin = {top: 20, right: 30, bottom: 30, left: 40};
   var width = 960 - margin.left - margin.right;
   var height = 500 - margin.top - margin.bottom;
@@ -282,7 +282,7 @@ function barChartWithLabels(selector) {
       ;
 
       // get the bar width from the first bar in our chart
-      var barWidth = d3.select(".bar")[0][0].width.baseVal.value;
+      var barWidth = d3.select(selector).select(".bar")[0][0].width.baseVal.value;
 
       bar.append("text")
         .attr("x", function(d) { return x(d.name) + (barWidth / 2) })
@@ -324,6 +324,139 @@ function barChartWithLabels(selector) {
           .attr("dy", ".71em")
           .style("text-anchor", "end")
           .text("Emails sent")
+      ;
+    })
+  ;
+}
+
+barChartWithAxis(".bar-chart-with-axis");
+
+
+function barChartWithLabels(selector) {
+  var margin = {top: 20, right: 30, bottom: 80, left: 80};
+  var width = 1080 - margin.left - margin.right;
+  var height = 500 - margin.top - margin.bottom;
+  var labelStyles = {
+    inRange: {
+      position: 0
+      , color: "white"
+    },
+    outOfRange: {
+      // if the bar chart is too small to show labels, place these above the chart
+      // and change the text color to a darker one (for visibility purposes)
+      position: -28
+      , color: "#8b8b8b"
+    }
+  };
+
+  var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+  var y = d3.scale.linear()
+    .range([height, 0]);
+
+
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+
+  var chart = d3.select(selector)
+    .attr("width", width + margin.left + margin.right)
+    .attr("height",  height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  d3.csv("data/d3-bar-data.csv")
+    // map the CSV data to key / value pairs
+    // remember to coerce the value to a number since CSV data defaults to string 
+    .row(function(d) { return {name: d.name, value: +d.value}; })
+    .get(function(error, data) {
+      x.domain(data.map(function(d) { return d.name; }));
+      y.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+      var bar = chart.selectAll("g")
+        .data(data)
+        .enter()
+        .append("g");
+
+      bar.append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.name); })
+        .attr("y", function(d) { return y(d.value); })
+        .attr("height", function(d) { return height - y(d.value); })
+        .attr("width", x.rangeBand())
+        .attr("rx", 2)
+        .attr("ry", 2)
+        .attr("transform", function(d, i) {
+          // drops the bars by 1px so that we can use rx / ry
+          // to get rounded top corners while ensuring the bar doesn't go lower
+          // than the axis
+          return "translate(0, 1)";
+        })
+      ;
+
+      // get the bar width from the first bar in our chart
+      var barWidth = d3.select(selector).select(".bar")[0][0].width.baseVal.value;
+
+      bar.append("text")
+        .attr("x", function(d) { return x(d.name) + (barWidth / 2) })
+        .attr("y", function(d) {
+          var defaultPosition = y(d.value) + 10;
+          if (defaultPosition > (height - 20)) {
+            return defaultPosition + labelStyles.outOfRange.position;
+          } else {
+            return defaultPosition + labelStyles.inRange.position;
+          }
+        })
+        .attr("dy", ".75em")
+        .attr("fill", function(d) {
+          var defaultPosition = y(d.value) + 10;
+          if (defaultPosition > (height - 20)) {
+            return labelStyles.outOfRange.color;
+          } else {
+            return labelStyles.inRange.color;
+          }
+        })
+        .text(function(d) { return d.value; })
+      ;
+
+      // add bottom axis
+      chart.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+      ;
+
+      // add left axis
+      chart.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      ;
+
+      // add left label
+      chart.append("g")
+        .attr("class", "label")
+        .append("text")
+          .attr("text-anchor", "middle")
+          .attr("transform", "rotate(-90)")
+          .attr("y", -50)
+          .attr("x", - height / 2)
+          .text("Emails sent")
+      ;
+
+      // add bottom label
+      chart.append("g")
+        .attr("class", "label")
+        .append("text")
+          .attr("text-anchor", "middle")
+          .attr("y", (height + margin.top + margin.bottom) - 50) 
+          .attr("x", width / 2)
+          .text("Months")
       ;
     })
   ;
