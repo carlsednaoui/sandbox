@@ -34,3 +34,20 @@
 .label text {
   font-size: 18px;
 }
+
+
+/* horizontal bar chart */
+
+.horizontal-bar-chart {
+  background-color: #F5F5F5;
+  border-radius: 2px;
+}
+
+.horizontal-bar-chart rect {
+  fill: #66C376;
+}
+
+.horizontal-bar-chart text {
+  font: 10px sans-serif;
+  text-anchor: end;
+}
