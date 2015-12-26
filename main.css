@@ -3,3 +3,8 @@ body {
   /*color: salmon;*/
   padding: 40px;
 }
+
+
+.chart-container {
+  margin-bottom: 100px;
+}
