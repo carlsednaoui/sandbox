@@ -1,3 +1,10 @@
+/* D3 development styles */
+
+.chart-container {
+  margin-bottom: 100px;
+}
+
+
 /* custom D3 styles for MC charts */
 
 .bar-chart rect {
