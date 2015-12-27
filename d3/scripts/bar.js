@@ -791,6 +791,27 @@ function groupedBarChart(selector) {
     x1.domain(companies).rangeRoundBands([0, x0.rangeBand()]);
     y.domain([0, d3.max(data, function(d) { return d3.max(d.company, function(d) { return d.value; }); })]);
 
+    var bars = chart.selectAll(".company")
+      .data(data)
+      .enter()
+      .append("g")
+      .attr("class", "company")
+      .attr("transform", function(d) { return "translate(" + x0(d.date) + ",0)"; })
+    ;
+
+    bars.selectAll("rect")
+      .data(function(d) { return d.company; })
+      .enter()
+      .append("rect")
+      .attr("width", x1.rangeBand())
+      .attr("x", function(d) { return x1(d.company); })
+      .attr("y", function(d) { return y(d.value) + 1; })
+      .attr("rx", 2)
+      .attr("ry", 2)
+      .attr("height", function(d) { return height - y(d.value); })
+      .style("fill", function(d) { return color(d.company); })
+    ;
+
     chart.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
@@ -800,25 +821,6 @@ function groupedBarChart(selector) {
       .attr("class", "y axis")
       .call(yAxis)
     ;
-
-    var bars = chart.selectAll(".company")
-      .data(data)
-      .enter()
-      .append("g")
-      .attr("class", "company")
-      .attr("transform", function(d) { return "translate(" + x0(d.date) + ",0)"; })
-    ;
-
-      bars.selectAll("rect")
-        .data(function(d) { return d.company; })
-        .enter()
-        .append("rect")
-        .attr("width", x1.rangeBand())
-        .attr("x", function(d) { return x1(d.company); })
-        .attr("y", function(d) { return y(d.value); })
-        .attr("height", function(d) { return height - y(d.value); })
-        .style("fill", function(d) { return color(d.company); })
-      ;
 
     // get the bar width from the first bar in our chart
     var barWidth = d3.select(selector).select(".company rect")[0][0].width.baseVal.value;
@@ -869,6 +871,7 @@ function groupedBarChart(selector) {
         .text("Months")
     ;
 
+    // create legend
     var legend = chart.selectAll(".legend")
       .data(companies.slice().reverse())
       .enter()
@@ -880,11 +883,13 @@ function groupedBarChart(selector) {
         .attr("x", width + 18)
         .attr("width", 18)
         .attr("height", 18)
+        .attr("rx", 2)
+        .attr("ry", 2)
         .style("fill", color);
 
       legend.append("text")
         .attr("x", width + 40)
-        .attr("y", 9)
+        .attr("y", 8)
         .attr("dy", ".35em")
         .style("text-anchor", "start")
         .text(function(d) {
