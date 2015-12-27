@@ -678,3 +678,175 @@ function horizontalBarChat(selector) {
 }
 
 horizontalBarChat(".horizontal-bar-chart")
+
+
+function groupedBarChart(selector) {
+  var margin = {top: 20, right: 150, bottom: 80, left: 80};
+  var width = 1080 - margin.left - margin.right;
+  var height = 500 - margin.top - margin.bottom;
+  var labelStyles = {
+    inRange: {
+      position: 0
+      , color: "white"
+    },
+    outOfRange: {
+      // if the bar chart is too small to show labels, place these above the chart
+      // and change the text color to a darker one (for visibility purposes)
+      position: -28
+      , color: "#8b8b8b"
+    }
+  };
+  
+  var x0 = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1)
+  ;
+
+  var x1 = d3.scale.ordinal();
+
+  var y = d3.scale.linear()
+    .range([height, 0])
+  ;
+
+  var color = d3.scale.ordinal()
+    .range(["#A767BF", "#D09678"]);
+
+
+  var xAxis = d3.svg.axis()
+    .scale(x0)
+    .orient("bottom")
+  ;
+
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+  ;
+
+  var chart = d3.select(selector)
+    .attr("width", width + margin.left + margin.right)
+    .attr("height",  height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+  ;
+
+  d3.json("/d3/data/bar-chart-grouped.json", function(error, json) {
+    var data = json.data;
+
+    var companies = d3.keys(data[0]).filter(function(key) { return key !== "date"; });;
+
+    data.forEach(function(d) {
+      d.company = companies.map(function(company) { return {company: company, value: +d[company]}; });
+    });
+
+    x0.domain(data.map(function(d) { return d.date; }));
+    x1.domain(companies).rangeRoundBands([0, x0.rangeBand()]);
+    y.domain([0, d3.max(data, function(d) { return d3.max(d.company, function(d) { return d.value; }); })]);
+
+    chart.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    chart.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    ;
+
+    var bars = chart.selectAll(".company")
+      .data(data)
+      .enter()
+      .append("g")
+      .attr("class", "company")
+      .attr("transform", function(d) { return "translate(" + x0(d.date) + ",0)"; })
+    ;
+
+      bars.selectAll("rect")
+        .data(function(d) { return d.company; })
+        .enter()
+        .append("rect")
+        .attr("width", x1.rangeBand())
+        .attr("x", function(d) { return x1(d.company); })
+        .attr("y", function(d) { return y(d.value); })
+        .attr("height", function(d) { return height - y(d.value); })
+        .style("fill", function(d) { return color(d.company); })
+      ;
+
+    // get the bar width from the first bar in our chart
+    var barWidth = d3.select(selector).select(".company rect")[0][0].width.baseVal.value;
+
+    bars.selectAll("text")
+      .data( function(d) { return d.company; })
+      .enter()
+      .append("text")
+      .attr("x", function(d) { return x1(d.company) + (barWidth / 2) })
+      .attr("y", function(d, i) {
+        var defaultPosition = y(d.value) + 10;
+        if (defaultPosition > (height - 20)) {
+          return defaultPosition + labelStyles.outOfRange.position;
+        } else {
+          return defaultPosition + labelStyles.inRange.position;
+        }
+      })
+      .attr("dy", ".75em")
+      .attr("fill", function(d) {
+        var defaultPosition = y(d.value) + 15;
+        if (defaultPosition > (height - 20)) {
+          return labelStyles.outOfRange.color;
+        } else {
+          return labelStyles.inRange.color;
+        }
+      })
+      .text(function(d, i) { return d.value; });
+    ;
+
+    // add left label
+    chart.append("g")
+      .attr("class", "label")
+      .append("text")
+        .attr("text-anchor", "middle")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -50)
+        .attr("x", - height / 2)
+        .text("Emails sent")
+    ;
+
+    // add bottom label
+    chart.append("g")
+      .attr("class", "label")
+      .append("text")
+        .attr("text-anchor", "middle")
+        .attr("y", (height + margin.top + margin.bottom) - 50) 
+        .attr("x", width / 2)
+        .text("Months")
+    ;
+
+    var legend = chart.selectAll(".legend")
+      .data(companies.slice().reverse())
+      .enter()
+      .append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+      legend.append("rect")
+        .attr("x", width + 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", color);
+
+      legend.append("text")
+        .attr("x", width + 40)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "start")
+        .text(function(d) {
+         // if a company has a long name
+         // trim it and add ellipsis after 15 characters
+          if (d.length > 15) {
+            return d.slice(0, 15) + "...";
+          } else {
+            return d;
+          }
+        });
+  });
+}
+
+groupedBarChart(".grouped-bar-chart");
