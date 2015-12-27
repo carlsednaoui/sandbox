@@ -38,8 +38,8 @@
 
 /* horizontal bar chart */
 
-.horizontal-bar-chart {
-  background-color: #F5F5F5;
+.horizontal-bar-chart rect.bar-container {
+  fill: #F5F5F5;
   border-radius: 2px;
 }
 
@@ -50,4 +50,26 @@
 .horizontal-bar-chart text {
   font: 10px sans-serif;
   text-anchor: end;
+}
+
+.horizontal-bar-chart .title text {
+  text-anchor: start;
+  font-size: 16px;
+}
+
+.horizontal-bar-chart .data-details text {
+  text-anchor: end;
+  font-size: 16px;  
+}
+
+.horizontal-bar-chart .data-details.right-text text {
+  text-anchor: end;
+  font-size: 12px; 
+  fill: #8b8b8b;
+}
+
+.horizontal-bar-chart .data-details.left-text text {
+  text-anchor: start;
+  font-size: 12px; 
+  fill: #8b8b8b;
 }

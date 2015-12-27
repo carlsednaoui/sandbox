@@ -609,12 +609,14 @@ function barChartWithLabelsJSON(selector) {
 barChartWithLabelsJSON(".bar-chart-with-labels-json");
 
 function horizontalBarChat(selector) {
-  var width = 420;
+  var margin = {top: 40, right: 10, bottom: 40, left: 10};
+  var width = 540 - margin.left - margin.right;
+  var height = 200 - margin.top - margin.bottom;
   var barHeight = 20;
 
   var chart = d3.select(selector)
     .attr("width", width)
-    .attr("height", barHeight)
+    .attr("height", height)
   ;
 
   var labelStyles = {
@@ -631,7 +633,7 @@ function horizontalBarChat(selector) {
   };
   var labelVisibilityThreshold = 100;
 
-  d3.json("/d3/data/bar-chart-data-horizontal.json", function(error, json) {
+  d3.json("/d3/data/bar-chart-data-horizontal-subject-line.json", function(error, json) {
     // data needs to be inside an array so we can use the `selectAll` trick
     var data = [json.data.average_subject_line_length];
 
@@ -647,11 +649,23 @@ function horizontalBarChat(selector) {
       .append("g")
     ;
 
+    // add container bar
+    bar.append("rect")
+      .attr("width", width)
+      .attr("height", barHeight)
+      .attr("class", "bar-container")
+      .attr("rx", 2)
+      .attr("ry", 2)
+      .attr("y", margin.top)
+    ;
+
+    // add data bar
     bar.append("rect")
       .attr("width", x(data))
       .attr("height", barHeight)
       .attr("rx", 2)
       .attr("ry", 2)
+      .attr("y", margin.top)
     ;
 
     var barWidth = d3.select(selector).select("rect")[0][0].width.baseVal.value;
@@ -663,7 +677,7 @@ function horizontalBarChat(selector) {
           return x(d) - labelStyles.inRange.position;
         }
       })
-      .attr("y", barHeight / 2)
+      .attr("y", margin.top + barHeight / 2)
       .attr("dy", ".35em")
       .attr("fill", function(d) {
         if (barWidth < labelVisibilityThreshold) {
@@ -673,6 +687,42 @@ function horizontalBarChat(selector) {
         }
       })
       .text(function(d) { return d + " characters"; })
+    ;
+
+    // add chart title as top left label
+    chart.append("g")
+      .attr("class", "label title")
+      .append("text")
+        .attr("y", 25)
+        .attr("x", 0)
+        .text(json.data.chart_title)
+    ;
+
+    // add data details as top right label
+    chart.append("g")
+      .attr("class", "label data-details")
+      .append("text")
+        .attr("y", 25)
+        .attr("x", barWidth)
+        .text(json.data.top_right_label)
+    ;
+
+    // add data legend as bottom left label
+    chart.append("g")
+      .attr("class", "data-details left-text")
+      .append("text")
+        .attr("y", margin.top + barHeight + 20)
+        .attr("x", 0)
+        .text(json.data.bottom_labels[0])
+    ;
+
+    // add data legend as bottom right label
+    chart.append("g")
+      .attr("class", "data-details right-text")
+      .append("text")
+        .attr("y", margin.top + barHeight + 20)
+        .attr("x", barWidth)
+        .text(json.data.bottom_labels[1])
     ;
   });
 }
