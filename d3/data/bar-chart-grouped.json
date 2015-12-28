@@ -7,7 +7,7 @@
       {"date": "April", "companyA": 16, "companyBWithALongName": 42},
       {"date": "May", "companyA": 23, "companyBWithALongName": 8},
       {"date": "June", "companyA": 42, "companyBWithALongName": 15},
-      {"date": "July", "companyA": 4, "companyBWithALongName": 16},
+      {"date": "July", "companyA": 3, "companyBWithALongName": 16},
       {"date": "August", "companyA": 8, "companyBWithALongName": 23},
       {"date": "September", "companyA": 0, "companyBWithALongName": 42},
       {"date": "October", "companyA": 15, "companyBWithALongName": 4},
