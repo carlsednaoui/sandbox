@@ -973,11 +973,11 @@ function stackedBarChart(selector) {
       .enter()
       .append("rect")
       .attr("width", x.rangeBand())
-      .attr("y", function(d) {
+      .attr("y", function(d, i) {
         // if it's the first bar graphed, drop it by 1 to hide border radius in the axis
         // if it's the second bar graphed, drop it by 3 to hide border radius in the other bar
-        if (d.y0 == 0) return y(d.y1) + 1;
-        return y(d.y1) + 3;
+        if (i == 0 || d.y0 == 0) return y(d.y1) + 1;
+        return y(d.y1) + (3*i);
       })
       .attr("height", function(d) { return y(d.y0) - y(d.y1); })
       .attr("rx", 2)
@@ -1003,10 +1003,9 @@ function stackedBarChart(selector) {
       .enter()
       .append("text")
       .attr("y", function(d, i) {
-        if (d.value  == 0) return;
-        return y(d.y1) + 10;
+        return y(d.y1) + (i*3) + 5;
       })
-      .attr("dy", ".75em")
+      .attr("dy", "1em")
       .attr("dx", barWidth / 2)
       .attr("fill", "white")
       .text(function(d, i) {
