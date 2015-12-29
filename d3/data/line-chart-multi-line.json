@@ -1,0 +1,17 @@
+{
+  "data":
+    [
+      {"date": "January", "companyA": 4, "companyBWithALongName": 4},
+      {"date": "February", "companyA": 8, "companyBWithALongName": 0},
+      {"date": "March", "companyA": 15, "companyBWithALongName": 23},
+      {"date": "April", "companyA": 16, "companyBWithALongName": 42},
+      {"date": "May", "companyA": 23, "companyBWithALongName": 8},
+      {"date": "June", "companyA": 42, "companyBWithALongName": 15},
+      {"date": "July", "companyA": 3, "companyBWithALongName": 16},
+      {"date": "August", "companyA": 8, "companyBWithALongName": 23},
+      {"date": "September", "companyA": 0, "companyBWithALongName": 42},
+      {"date": "October", "companyA": 15, "companyBWithALongName": 4},
+      {"date": "November", "companyA": 16, "companyBWithALongName": 0},
+      {"date": "December", "companyA": 23, "companyBWithALongName": 45}
+    ]
+}
