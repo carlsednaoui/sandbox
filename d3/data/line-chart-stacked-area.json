@@ -1,0 +1,29 @@
+{
+  "data":
+    [
+      {"date": "January", "emails": 4, "name": "CompanyA"},
+      {"date": "February", "emails": 8, "name": "CompanyA"},
+      {"date": "March", "emails": 15, "name": "CompanyA"},
+      {"date": "April", "emails": 16, "name": "CompanyA"},
+      {"date": "May", "emails": 23, "name": "CompanyA"},
+      {"date": "June", "emails": 42, "name": "CompanyA"},
+      {"date": "July", "emails": 3, "name": "CompanyA"},
+      {"date": "August", "emails": 8, "name": "CompanyA"},
+      {"date": "September", "emails": 0, "name": "CompanyA"},
+      {"date": "October", "emails": 15, "name": "CompanyA"},
+      {"date": "November", "emails": 16, "name": "CompanyA"},
+      {"date": "December", "emails": 23, "name": "CompanyA"},
+      {"date": "January", "emails": 4, "name": "CompanyB"},
+      {"date": "February", "emails": 0, "name": "CompanyB"},
+      {"date": "March", "emails": 23, "name": "CompanyB"},
+      {"date": "April", "emails": 42, "name": "CompanyB"},
+      {"date": "May", "emails": 8, "name": "CompanyB"},
+      {"date": "June", "emails": 15, "name": "CompanyB"},
+      {"date": "July", "emails": 16, "name": "CompanyB"},
+      {"date": "August", "emails": 23, "name": "CompanyB"},
+      {"date": "September", "emails": 42, "name": "CompanyB"},
+      {"date": "October", "emails": 4, "name": "CompanyB"},
+      {"date": "November", "emails": 0, "name": "CompanyB"},
+      {"date": "December", "emails": 45, "name": "CompanyB"}
+    ]
+}
