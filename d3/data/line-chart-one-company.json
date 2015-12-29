@@ -1,0 +1,9 @@
+{
+  "data":
+    [
+      {"date": "October", "emails": 18},
+      {"date": "November", "emails": 32},
+      {"date": "December", "emails": 4},
+      {"date": "January", "emails": 9}
+    ]
+}

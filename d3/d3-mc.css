@@ -7,11 +7,9 @@
 
 /* custom D3 styles for MC charts */
 
-.bar-chart rect {
-  fill: #66C376;
-}
+/* universal styles */
 
-.bar-chart text {
+text {
   font: 10px sans-serif;
   text-anchor: middle;
 }
@@ -34,6 +32,13 @@
 
 .label text {
   font-size: 18px;
+}
+
+
+/* bar chart styles */
+
+.bar-chart rect {
+  fill: #66C376;
 }
 
 
@@ -73,4 +78,17 @@
   text-anchor: start;
   font-size: 12px; 
   fill: #8b8b8b;
+}
+
+/* line chart */
+/* DJ MC IN THE HOUZE */
+
+.line-chart .line {
+  fill: none;
+  stroke: #7EBC7A;
+  stroke-width: 3px;
+}
+
+.line-chart text.data-label {
+  fill: #8b8b8b; 
 }
