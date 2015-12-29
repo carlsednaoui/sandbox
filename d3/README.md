@@ -6,7 +6,6 @@
 
 ## Charts to learn
 
-- Stacked area chart: http://bl.ocks.org/mbostock/3020685
 - Scatter plot: http://bl.ocks.org/mbostock/3887118
 - Heat map chart: http://bl.ocks.org/mbostock/3202354
 - Heat map with numbers inside + scale

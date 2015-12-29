@@ -806,6 +806,7 @@ function areaChartStacked(selector) {
 }
 areaChartStacked(".area-chart-stacked");
 
+
 function areaChartStackedNormalized(selector) {
   var margin = {top: 20, right: 150, bottom: 80, left: 80};
   var width = 1080 - margin.left - margin.right;
@@ -858,15 +859,17 @@ function areaChartStackedNormalized(selector) {
   d3.json("/d3/data/line-chart-multi-line.json", function(error, json) {
     var data = json.data;
 
-    color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
+    var companyNames = d3.keys(data[0]).filter(function(key) { return key !== "date"; });
+    color.domain(companyNames);
 
     var companies = stack(color.domain().map(function(company) {
       return {
         company: company,
         values: data.map(function(d) {
+        // debugger;
           return {
             date: d.date,
-            y: d[company] / 100,
+            y: d[company] / d3.sum(companyNames.map(function(c) {return d[c]; })),
             value: d[company]
           };
         })
@@ -918,8 +921,8 @@ function areaChartStackedNormalized(selector) {
         if (i == 0) return 10; // if it's the first data point, get it away form the y-axis
       })
       .attr("dy", function(d, i) {
-        // move all labels above the line
-        return -7;
+        // move all labels below the line
+        return +15;
       })
       .text(function(d, i) {
         // don't return a 0 value label
