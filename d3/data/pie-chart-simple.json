@@ -1,0 +1,12 @@
+{
+  "data":
+    [
+      {"day": "Monday", "emails": 18},
+      {"day": "Tuesday", "emails": 32},
+      {"day": "Wednesday", "emails": 10},
+      {"day": "Thursday", "emails": 9},
+      {"day": "Pizzaday", "emails": 4},
+      {"day": "Saturday", "emails": 3},
+      {"day": "Sunday", "emails": 4}
+    ]
+}

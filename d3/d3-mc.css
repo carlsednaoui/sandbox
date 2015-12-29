@@ -98,3 +98,17 @@ text {
 .area-chart .area {
   fill: #7EBC7A;
 }
+
+/* pie chart */
+/* gimme pie, i'm hungry! */
+
+.arc {
+  stroke: white;
+  stroke-width: 3;
+}
+
+text.arc-label {
+  fill: white;
+  stroke-width: 1px;
+  -webkit-font-smoothing: antialiased;
+}
