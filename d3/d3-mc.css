@@ -92,3 +92,9 @@ text {
 .line-chart text.data-label {
   fill: #8b8b8b; 
 }
+
+/* area chart */
+
+.area-chart .area {
+  fill: #7EBC7A;
+}
