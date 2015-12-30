@@ -174,6 +174,9 @@ function simpleHeatmapChartTwo(selector) {
       .style("fill", function(d) { return colorScale(d.value); })
     ;
 
+    // add value to each heatmap entry
+    // there must be a better way to do this
+    // carl needs to learn more d3
     svg.append("g")
       .selectAll("text")
       .data(data.reduce(function(prev, curr, i, arr) {
@@ -232,23 +235,32 @@ function simpleHeatmapChartTwo(selector) {
     ;
 
 
-    // var labels = json.labels;
+    var labels = json.labels;
 
-    // var xScale = d3.scale.ordinal()
-    //   .range(labels.x)
-    // ;
+    var xAxis = d3.svg.axis()
+      .scale(x)
+      .tickFormat(function(d) { return labels.x[d]; })
+      .orient("bottom")
+    ;
 
-    // var xAxis = d3.svg.axis()
-    //   .scale(xScale)
-    //   .orient("bottom")
-    // ;
+    // add x-axis with label
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    ;
+    
+    var yAxis = d3.svg.axis()
+      .scale(y)
+      .tickFormat(function(d) { return labels.y[d]; })
+      .orient("left")
+    ;
 
-    // // add x-axis with label
-    // svg.append("g")
-    //   .attr("class", "x axis")
-    //   .attr("transform", "translate(0," + height + ")")
-    //   .call(xAxis)
-    // ;
+    // add x-axis with label
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    ;
 
   });
 }

@@ -112,3 +112,18 @@ text.arc-label {
   stroke-width: 1px;
   -webkit-font-smoothing: antialiased;
 }
+
+
+/* heatmap */
+
+.heatmap-chart .tick line {
+  display: none;
+}
+
+.heatmap-chart .y .tick text {
+  transform: translate(0px, 39px);
+}
+
+.heatmap-chart .x .tick text {
+  transform: translate(60px, 0);
+}

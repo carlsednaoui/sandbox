@@ -9,6 +9,6 @@
     ],
   "labels": {
     "x": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    "y": ["10am - 1pm", "2 pm - 4pm", "5pm - Midnight"]
+    "y": ["10am - 1pm", "2 pm - 4pm", "5pm - Midnight", "foo", "bar"]
   }
 }
