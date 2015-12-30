@@ -61,10 +61,6 @@ function simpleHeatmapChart(selector) {
         return offset - heatHeight;
         // return y(d.time);
       })
-      // .attr("x", function(d) { return x(d.day) - (heatWidth / 2); })
-      // .attr("y", function(d) { return y(d.time) - (heatHeight / 2); })
-      // .attr("width", x(xStep) - x(0))
-      // .attr("height",  y(0) - y(yStep))
       .attr("width", heatWidth)
       .attr("height",  heatHeight)
       .style("fill", function(d) { return z(d.emails); })
@@ -117,3 +113,9 @@ function simpleHeatmapChart(selector) {
   });
 }
 simpleHeatmapChart(".simple-heatmap-chart");
+
+
+function simpleHeatmapChartTwo(selector) {
+  // code goes here using heatmap-round-two.json
+}
+simpleHeatmapChartTwo(".simple-heatmap-chart-two");
