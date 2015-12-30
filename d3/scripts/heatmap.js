@@ -116,6 +116,140 @@ simpleHeatmapChart(".simple-heatmap-chart");
 
 
 function simpleHeatmapChartTwo(selector) {
-  // code goes here using heatmap-round-two.json
+  var margin = {top: 20, right: 150, bottom: 80, left: 80};
+  var width = 1080 - margin.left - margin.right;
+  var height = 500 - margin.top - margin.bottom;
+
+  d3.json("/d3/data/heatmap-round-two.json", function(error, json) {
+    var data = json.data;
+
+    var x = d3.scale.linear()
+      .range([0, width])
+      .domain([0,data[0].length])
+    ;
+
+    var y = d3.scale.linear()
+      .range([0, height])
+      .domain([0,data.length])
+    ;
+
+    var maxValue = d3.max(data.map(function(array) {
+      return d3.max(array);
+    }));
+
+    var colorScale = d3.scale.linear()
+      .domain([0, maxValue])
+      .range(["white", "steelblue"])
+    ;
+
+    var svg = d3.select(selector)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+    ;
+
+    var row = svg.selectAll(".row")
+      .data(data)
+      .enter()
+      .append("g")
+      .attr("class", "row")
+    ;
+
+    var col = row.selectAll(".cell")
+      .data(function (d,i) {
+        return d.map(function(a) {
+          return {
+            value: a,
+            row: i
+          };
+        })
+      })
+      .enter().append("rect")
+      .attr("class", "cell")
+      .attr("x", function(d, i) { return x(i); })
+      .attr("y", function(d, i) { return y(d.row); })
+      .attr("width", x(1))
+      .attr("height", y(1))
+      .style("fill", function(d) { return colorScale(d.value); })
+    ;
+
+    svg.append("g")
+      .selectAll("text")
+      .data(data.reduce(function(prev, curr, i, arr) {
+        return prev.concat(curr.map(function(el, ii) {
+          return {
+            value: el,
+            col: i,
+            row: ii
+          }
+        }));
+      }, []))
+      .enter()
+      .append("text")
+      .classed("data-label", true)
+      .attr("y", function(d, i) {
+        return y(d.col) + (y(1) / 2);
+      })
+      .attr("x", function(d, i) {
+        return x(d.row) + (x(1) / 2);
+      })
+      .text(function(d, i) {
+        return d.value;
+      });
+    ;
+
+    // add legend for the color values
+    var legend = svg.selectAll(".legend")
+      .data(colorScale.ticks(6).slice(1).reverse())
+      .enter()
+      .append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) {
+        return "translate(" + (width + 20) + "," + (20 + i * 20) + ")";
+      })
+    ;
+
+    legend.append("rect")
+      .attr("width", 20)
+      .attr("height", 20)
+      .style("fill", colorScale)
+    ;
+
+    legend.append("text")
+      .attr("x", 30)
+      .attr("y", 10)
+      .attr("dy", ".35em")
+      .text(String)
+    ;
+
+    svg.append("text")
+      .attr("class", "label")
+      .attr("x", width + 35)
+      .attr("y", 10)
+      .attr("dy", ".35em")
+      .text("Emails")
+    ;
+
+
+    // var labels = json.labels;
+
+    // var xScale = d3.scale.ordinal()
+    //   .range(labels.x)
+    // ;
+
+    // var xAxis = d3.svg.axis()
+    //   .scale(xScale)
+    //   .orient("bottom")
+    // ;
+
+    // // add x-axis with label
+    // svg.append("g")
+    //   .attr("class", "x axis")
+    //   .attr("transform", "translate(0," + height + ")")
+    //   .call(xAxis)
+    // ;
+
+  });
 }
 simpleHeatmapChartTwo(".simple-heatmap-chart-two");
