@@ -116,7 +116,7 @@ simpleHeatmapChart(".simple-heatmap-chart");
 
 
 function simpleHeatmapChartTwo(selector) {
-  var margin = {top: 20, right: 150, bottom: 80, left: 80};
+  var margin = {top: 20, right: 150, bottom: 80, left: 150};
   var width = 1080 - margin.left - margin.right;
   var height = 500 - margin.top - margin.bottom;
 
@@ -139,7 +139,7 @@ function simpleHeatmapChartTwo(selector) {
 
     var colorScale = d3.scale.linear()
       .domain([0, maxValue])
-      .range(["white", "steelblue"])
+      .range(["white", "#66C376"])
     ;
 
     var svg = d3.select(selector)
@@ -192,7 +192,7 @@ function simpleHeatmapChartTwo(selector) {
       .append("text")
       .classed("data-label", true)
       .attr("y", function(d, i) {
-        return y(d.col) + (y(1) / 2);
+        return y(d.col) + (y(1) / 2) + 5;
       })
       .attr("x", function(d, i) {
         return x(d.row) + (x(1) / 2);
@@ -260,6 +260,27 @@ function simpleHeatmapChartTwo(selector) {
     svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
+    ;
+
+    // add left label
+    svg.append("g")
+      .attr("class", "label")
+      .append("text")
+        .attr("text-anchor", "middle")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -100)
+        .attr("x", - height / 2)
+        .text("Email send time")
+    ;
+
+    // add bottom label
+    svg.append("g")
+      .attr("class", "label")
+      .append("text")
+        .attr("text-anchor", "middle")
+        .attr("y", (height + margin.top + margin.bottom) - 50) 
+        .attr("x", width / 2)
+        .text("Day of week")
     ;
 
   });

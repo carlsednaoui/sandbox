@@ -120,10 +120,13 @@ text.arc-label {
   display: none;
 }
 
+
 .heatmap-chart .y .tick text {
-  transform: translate(0px, 39px);
+  transform: translate(0px, 42px);
+  fill: #8b8b8b;
 }
 
 .heatmap-chart .x .tick text {
   transform: translate(60px, 0);
+  fill: #8b8b8b;
 }
