@@ -1,12 +1,12 @@
 {
   "data":
     [
-      {"day": "Monday", "emails": 18},
-      {"day": "Tuesday", "emails": 32},
-      {"day": "Wednesday", "emails": 10},
-      {"day": "Thursday", "emails": 9},
-      {"day": "Pizzaday", "emails": 4},
-      {"day": "Saturday", "emails": 3},
-      {"day": "Sunday", "emails": 4}
+      {"day": "Monday", "emailCount": 18, "emailPercentage": "0.10"},
+      {"day": "Tuesday", "emailCount": 32, "emailPercentage": "0.30"},
+      {"day": "Wednesday", "emailCount": 10, "emailPercentage": "0.10"},
+      {"day": "Thursday", "emailCount": 9, "emailPercentage": "0.05"},
+      {"day": "Friday", "emailCount": 4, "emailPercentage": "0.15"},
+      {"day": "Saturday", "emailCount": 3, "emailPercentage": "0.05"},
+      {"day": "Sunday", "emailCount": 4, "emailPercentage": "0.25"}
     ]
 }

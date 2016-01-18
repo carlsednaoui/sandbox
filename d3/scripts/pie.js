@@ -13,7 +13,7 @@ function dSimple(selector) {
 
   var pie = d3.layout.pie()
     .sort(null)
-    .value(function(d) { return d.emails; })
+    .value(function(d) { return d.emailPercentage; })
   ;
 
   var chart = d3.select(selector)
@@ -44,8 +44,8 @@ function dSimple(selector) {
       .attr("class", "arc-label")
       .text(function(d) {
         // don't show labels if there's not enough space for them
-        if (d.endAngle - d.startAngle < .25) return;
-        return d.data.day + ": " + d.data.emails;
+        if (d.endAngle - d.startAngle < .35) return;
+        return d.data.day + ": " + d.data.emailPercentage * 100 + "%";
       })
     ;
 

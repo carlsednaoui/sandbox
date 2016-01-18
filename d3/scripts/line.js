@@ -476,7 +476,7 @@ function areaChartMultiLine(selector) {
   ;
 
   var y = d3.scale.linear()
-    .range([height, 0])
+    .range([height, 0])    
   ;
 
   var xAxis = d3.svg.axis()
@@ -487,6 +487,7 @@ function areaChartMultiLine(selector) {
   var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
+    .tickFormat(function(d) { return d *100 + "%"; })
   ;
 
   var area = d3.svg.area()
@@ -494,7 +495,7 @@ function areaChartMultiLine(selector) {
     .y0(height)
     .y1(function(d) {
       // ensure line chart doesn't drop below 0 due to interpolation
-      if (d.emails == 0) return y(d.emails) - 4;
+      if (d.emails == 0) return y(d.emails) - 6;
       return y(d.emails);
     })
     .interpolate("monotone") // smooth that line, bro
@@ -510,7 +511,8 @@ function areaChartMultiLine(selector) {
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
   ;
 
-  d3.json("/d3/data/line-chart-multi-line.json", function(error, json) {
+  d3.json("/d3/data/line-chart-multi-line-time-of-send.json", function(error, json) {
+
     var data = json.data;
 
     color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
@@ -572,13 +574,11 @@ function areaChartMultiLine(selector) {
         if (i == 0) return 10; // if it's the first data point, get it away form the y-axis
       })
       .attr("dy", function(d, i) {
-        // get the first item out of the way
-        // move all other items above the line
-        if (i == 0) return -20;
+        // move all items above the line
         return -10;
       })
       .text(function(d, i) {
-        return d.emails;
+        return d.emails * 100 + "%";
       });
     ;
 
@@ -590,7 +590,7 @@ function areaChartMultiLine(selector) {
        .attr("transform", "rotate(-90)")
        .attr("y", -50)
        .attr("x", - height / 2)
-       .text("Emails sent")
+       .text("Email volume")
    ;
 
    // add bottom label
@@ -600,7 +600,7 @@ function areaChartMultiLine(selector) {
        .attr("text-anchor", "middle")
        .attr("y", (height + margin.top + margin.bottom) - 50) 
        .attr("x", width / 2)
-       .text("Months")
+       .text("Time of day")
    ;
 
    // create legend

@@ -1,0 +1,11 @@
+{
+  "data":
+    [
+      {"date": "12am - 4am", "Control": ".10", "Variables": ".20"},
+      {"date": "4am - 8am", "Control": ".05", "Variables": ".00"},
+      {"date": "8am - Noon", "Control": ".00", "Variables": ".40"},
+      {"date": "Noon - 4pm", "Control": ".50", "Variables": ".10"},
+      {"date": "4pm - 8pm", "Control": ".15", "Variables": ".05"},
+      {"date": "8pm - 12am", "Control": ".20", "Variables": ".25"}
+    ]
+}
