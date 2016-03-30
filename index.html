@@ -7,14 +7,21 @@
     <title>Carl's Sandbox</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" type="text/css">
+
   </head>
 
   <body>
-    <h1>Hello world</h1>
+
 
     <style type="text/css">
+      body {
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+
       table, th, td {
-         border: 1px solid black;
+         border: 1px solid #b7b7b7;
+         border-radius: 3px;
       }
       .left {
         display: inline-block;
@@ -30,6 +37,95 @@
         display: table;
         clear: both;
       }
+
+      table {
+        color: #808080;
+        width: 1080px;
+      }
+
+      th {
+        padding: 20px;
+        width: 300px;
+      }
+
+      th h2,
+      .enterprise h2 {
+        font-weight: 600;
+        margin-top: 10px;
+      }
+
+      th p,
+      .enterprise p {
+        font-weight: 400;
+        margin-bottom: 40px;
+      }
+
+      td {
+        padding: 10px 20px;
+      }
+
+      tbody a {
+        text-decoration: none;
+        color: #3186ce;
+      }
+
+      .price-container {
+        text-align: center;
+      }
+
+      .price {
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+
+      .discount {
+        font-size: 14px;
+        color: #39ca74;
+        font-weight: 600;
+        bottom: 14px;
+        position: relative;
+      }
+
+      .discount:before {
+        content: 'i';
+        border: 1px solid #39ca74;
+        padding: 0px 6px;
+        margin-right: 4px;
+        border-radius: 15px;
+        font-size: 12px;
+      }
+
+      .signup-button {
+        border: 2px solid #39ca74;
+        margin-top: 0;
+        width: 94px;
+        box-sizing: border-box;
+        padding: 14px;
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        color: #fff;
+        background-color: #39ca74;
+        outline: none;
+        cursor: pointer;
+        border-radius: 3px;
+        text-decoration: none;
+      }
+
+      .enterprise {
+        border: 1px solid #b7b7b7;
+        width: 1080px;
+        margin-top: 60px;
+        padding: 20px;
+        box-sizing: border-box;
+        color: #808080;
+      }
+
+      .enterprise .signup-button {
+        width: 200px;
+      }
+
     </style>
 
 
@@ -39,111 +135,155 @@
         <tr>
           <th>
             <h2>Ecommerce insights</h2>
-            <p>Your email program  generates over $100,000 in sales per year</p>
-            <div>
+            <p>Perfect for companies whose priority is to grow revenue through their email program.</p>
+            <div class="price-container">
               <div class="left">
-                <div>$2,499 / year</div>
-                <a href="#">Sign up</a>
+                <div class="price">$2,499 /year <span class="discount">Save 58%</span></div>
+                <a href="#" class="signup-button">Sign up</a>
               </div>
               <div class="right">
-                <div>$499 / month</div>
-                <a href="#">Sign up</a>
+                <div class="price">$499 /month</div>
+                <a href="#" class="signup-button">Sign up</a>
               </div>
+              <div class="clearfix"></div>
             </div>
           </th>
           <th>
             <h2>Research and planning</h2>
-            <p>You email your list on a fequent basis</p>
-            <div>
+            <p>Ideal for companies emailing on a frequent basis looking to gain deep competitive insights.</p>
+            <div class="price-container">
               <div class="left">
-                <div>$499 / year</div>
-                <a href="#">Sign up</a>
+                <div class="price">$499 /year <span class="discount">Save 58%</span></div>
+                <a href="#" class="signup-button">Sign up</a>
               </div>
               <div class="right">
-                <div>$99 / month</div>
-                <a href="#">Sign up</a>
+                <div class="price">$99 /month</div>
+                <a href="#" class="signup-button">Sign up</a>
               </div>
+              <div class="clearfix"></div>
             </div>
           </th>
           <th>
             <h2>Email strategy</h2>
-            <p>You are just getting started with email marketing</p>
-            <div>
+            <p>The best option for companies just getting started with their email program.</p>
+            <div class="price-container">
               <div class="left">
-                <div>$149 / year</div>
-                <a href="#">Sign up</a>
+                <div class="price">$149 /year <span class="discount">Save 58%</span></div>
+                <a href="#" class="signup-button">Sign up</a>
               </div>
               <div class="right">
-                <div>$29 / month</div>
-                <a href="#">Sign up</a>
+                <div class="price">$29 /month</div>
+                <a href="#" class="signup-button">Sign up</a>
               </div>
+              <div class="clearfix"></div>
             </div>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>See historical data</td>
-          <td>See historical data</td>
-          <td>See historical data</td>
+          <td>Plan your marketing calendar: view trends for upcoming events such as Mother's day</td>
+          <td>Plan your marketing calendar: view trends for upcoming events such as Mother's day</td>
+          <td>Plan your marketing calendar: view trends for upcoming events such as Mother's day</td>
         </tr>
         <tr>
-          <td>Make email lists</td>
-          <td>Make email lists</td>
-          <td>Make email lists</td>
+          <td>Create detailed email briefs: save your favorite emails into different lists</td>
+          <td>Create detailed email briefs: save your favorite emails into different lists</td>
+          <td>Create detailed email briefs: save your favorite emails into different lists</td>
         </tr>
         <tr>
-          <td>See mobile preview</td>
-          <td>See mobile preview</td>
-          <td>See mobile preview</td>
+          <td>Find A/B test inspiration: browse all available historical data</td>
+          <td>Find A/B test inspiration: browse all available historical data</td>
+          <td>Find A/B test inspiration: browse all available historical data</td>
         </tr>
         <tr>
-          <td>See stats on promotions and upcoming "events"</td>
-          <td>See stats on promotions and upcoming "events"</td>
-          <td>See stats on promotions and upcoming "events"</td>
+          <td>Refresh your email program: discover marketing copy & design inspiration</td>
+          <td>Refresh your email program: discover marketing copy & design inspiration</td>
+          <td>Refresh your email program: discover marketing copy & design inspiration</td>
         </tr>
         <tr>
-          <td>Find emails by company, industry, and tag</td>
-          <td>Find emails by company, industry, and tag</td>
-          <td>Find emails by company, industry, and tag</td>
+          <td>Stay one step ahead: see how your mobile optimization stacks v.s. other companies</td>
+          <td>Stay one step ahead: see how your mobile optimization stacks v.s. other companies</td>
+          <td>Stay one step ahead: see how your mobile optimization stacks v.s. other companies</td>
         </tr>
         <tr>
-          <td>Full-text search</td>
-          <td>Full-text search</td>
-          <td>Full-text search</td>
+          <td>Quickly create weekly and monthly reports: find emails by company, industry, and tag</td>
+          <td>Quickly create weekly and monthly reports: find emails by company, industry, and tag</td>
+          <td>Quickly create weekly and monthly reports: find emails by company, industry, and tag</td>
         </tr>
         <tr>
-          <td>Create reports</td>
-          <td>Create reports</td>
+          <td>Find competitive insights and cross-promotion opportunities: explore over 1 million emails with full-text search</td>
+          <td>Find competitive insights and cross-promotion opportunities: explore over 1 million emails with full-text search</td>
+          <td>Find competitive insights and cross-promotion opportunities: explore over 1 million emails with full-text search</td>
+        </tr>
+        <tr>
+          <td>Know what to do next: receive weekly insight straight to your inbox</td>
+          <td>Know what to do next: receive weekly insight straight to your inbox</td>
+          <td>Know what to do next: receive weekly insight straight to your inbox</td>
+        </tr>
+        <tr>
+          <td>Track anyone: request new companies and competitors to be added</td>
+          <td>Track anyone: request new companies and competitors to be added</td>
           <td>&mdash;</td>
         </tr>
         <tr>
-          <td>Request companies</td>
-          <td>Request companies</td>
+          <td>Access competitive insights: understand the email strategy behind any company's marketing efforts — <a href="https://s3.amazonaws.com/reports.mailcharts.com/216f0bf8-a98a-42be-8bd0-e0b148d80842/index.html">sample report</a></td>
+          <td>Access competitive insights: understand the email strategy behind any company's marketing efforts — <a href="https://s3.amazonaws.com/reports.mailcharts.com/216f0bf8-a98a-42be-8bd0-e0b148d80842/index.html">sample report</a></td>
           <td>&mdash;</td>
         </tr>
         <tr>
-          <td>View Transactional emails</td>
+          <td>Analyze multiple companies at once: View aggregate data for up to five companies — <a href="https://s3.amazonaws.com/reports.mailcharts.com/42711a1b-5db6-47ba-83a2-dbdd2f8c5b6b/index.html">sample report</a></td>
+          <td>Analyze multiple companies at once: View aggregate data for up to five companies — <a href="https://s3.amazonaws.com/reports.mailcharts.com/42711a1b-5db6-47ba-83a2-dbdd2f8c5b6b/index.html">sample report</a></td>
+          <td>&mdash;</td>
+        </tr>
+        <tr>
+          <td>Compare how you stack and identify trends: compare multiple companies or date ranges side-by-side — <a href="https://s3.amazonaws.com/reports.mailcharts.com/c13b35e6-d2c8-46bd-8048-8133e58c435b/index.html">sample report</a></td>
+          <td>Compare how you stack and identify trends: compare multiple companies or date ranges side-by-side — <a href="https://s3.amazonaws.com/reports.mailcharts.com/c13b35e6-d2c8-46bd-8048-8133e58c435b/index.html">sample report</a></td>
+          <td>&mdash;</td>
+        </tr>
+        <tr>
+          <td>Unlock competitors' promotional calendar: map company emails to a monthly calendar — <a href="https://s3.amazonaws.com/reports.mailcharts.com/0ab3514f-657c-405a-920e-4eb94a11ca4f/index.html">sample report</a></td>
+          <td>Unlock competitors' promotional calendar: map company emails to a monthly calendar — <a href="https://s3.amazonaws.com/reports.mailcharts.com/0ab3514f-657c-405a-920e-4eb94a11ca4f/index.html">sample report</a></td>
+          <td>&mdash;</td>
+        </tr>
+        <tr>
+          <td>Unlock transactional emails: MailCharts manually buys items and abandons carts from different companies</td>
           <td>&mdash;</td>
           <td>&mdash;</td>
         </tr>
         <tr>
-          <td>Download data (CSV, images)</td>
+          <td>Access persona-based journey maps: a timeline visualization showing a cohorts' experience within an email program — <a href="https://s3.amazonaws.com/reports.mailcharts.com/8720282b-1a53-4164-aad5-d54850f692d0/index.html">sample report</a></td>
           <td>&mdash;</td>
           <td>&mdash;</td>
         </tr>
         <tr>
-          <td>Request Transactional emails</td>
+          <td>Persona comparison: compare the frequency, types of emails sent to different cohorts, and A/B test strategy — <a href="https://s3.amazonaws.com/reports.mailcharts.com/cf5ec9c5-9cbd-4264-8b8c-91fc45c12f2b/index.html">sample report</a></td>
           <td>&mdash;</td>
           <td>&mdash;</td>
         </tr>
         <tr>
-          <td>Invoicing by check (Net-30, billed annually)</td>
+          <td>Request transactional emails: we'll buy and abandon the cart of the companies you choose (restrictions apply)</td>
+          <td>&mdash;</td>
+          <td>&mdash;</td>
+        </tr>
+        <tr>
+          <td>Export data: Run your own analysis by exporting downloading a CSV and create stunning presentations by downloading emails — <a href="https://s3.amazonaws.com/reports.mailcharts.com/a91efcca-c455-464a-a70e-1cbf6fe89c39/index.html">sample export</a></td>
+          <td>&mdash;</td>
+          <td>&mdash;</td>
+        </tr>
+        <tr>
+          <td>Simple billing: Check invoicing is available for yearly subscribers (net-30)</td>
           <td>&mdash;</td>
           <td>&mdash;</td>
         </tr>
       </tbody>
     </table>
+
+    <div class="enterprise">
+      <h2>Agencies and large businesses</h2>
+      <p>Interested in bringing MailCharts to your entire team? Looking for a custom report based on our proprietary data? Get in touch!</p>
+      <a href="#" class="signup-button">Chat with MailCharts</a>
+    </div>
 
     <script src="main.js"></script>
   </body>
