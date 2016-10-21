@@ -1,3 +1,259 @@
 body {
-  padding: 40px;
+  padding: 50px;
+}
+
+/**/
+/**/
+/**/
+
+.pricing .plan-duration {
+  width: 1080px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.pricing .plan-duration h2 {
+  color: #808080;
+}
+
+.pricing .plan-duration .switch {
+  margin: 0 auto;
+}
+
+.pricing table, .pricing th, .pricing td {
+   border: 1px solid #b7b7b7;
+   border-radius: 3px;
+}
+
+.pricing table {
+  color: #808080;
+  width: 1080px;
+}
+
+.pricing th {
+  padding: 20px;
+  width: 300px;
+}
+
+.pricing th h2,
+.pricing .enterprise h2 {
+  font-weight: 600;
+}
+
+.pricing th p,
+.pricing .enterprise p {
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.pricing td {
+  padding: 15px 20px;
+}
+
+.pricing .plan-description {
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.pricing tbody a {
+  text-decoration: none;
+  color: #3186ce;
+}
+
+.pricing .price-container {
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.pricing .discount {
+  font-size: 14px;
+  color: #39ca74;
+  font-weight: 600;
+  bottom: 14px;
+  position: relative;
+}
+
+.pricing .discount:before {
+  content: 'i';
+  border: 1px solid #39ca74;
+  padding: 0px 6px;
+  margin-right: 4px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+.pricing .signup-button {
+  border: 2px solid #39ca74;
+  margin: 15px auto 0 auto;
+  width: 94px;
+  box-sizing: border-box;
+  padding: 14px;
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #39ca74;
+  outline: none;
+  cursor: pointer;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.pricing .enterprise {
+  border: 1px solid #b7b7b7;
+  width: 1080px;
+  margin-top: 60px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #808080;
+  text-align: center;
+}
+
+.pricing .enterprise .signup-button {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}
+
+
+
+/*the switch*/
+.switch {
+  position: relative;
+  display: block;
+  vertical-align: top;
+  width: 100px;
+  height: 30px;
+  padding: 3px;
+  margin: 0 10px 10px 0;
+  background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+  background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+  border-radius: 18px;
+  cursor: pointer;
+}
+.switch-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.switch-label {
+  position: relative;
+  display: block;
+  height: inherit;
+  font-size: 10px;
+  text-transform: uppercase;
+  background: #eceeef;
+  border-radius: inherit;
+}
+.switch-label:before, .switch-label:after {
+  position: absolute;
+  top: 50%;
+  margin-top: -.5em;
+  line-height: 1;
+  -webkit-transition: inherit;
+  -moz-transition: inherit;
+  -o-transition: inherit;
+  transition: inherit;
+}
+.switch-label:before {
+  content: attr(data-off);
+  right: 11px;
+  color: #aaaaaa;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+}
+.switch-label:after {
+  content: attr(data-on);
+  left: 11px;
+  color: #FFFFFF;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
+.switch-input:checked ~ .switch-label {
+  background: #E1B42B;
+}
+.switch-input:checked ~ .switch-label:before {
+  opacity: 0;
+}
+.switch-input:checked ~ .switch-label:after {
+  opacity: 1;
+}
+.switch-handle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+  background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+  border-radius: 100%;
+}
+.switch-handle:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -6px 0 0 -6px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+  background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+  border-radius: 6px;
+}
+.switch-input:checked ~ .switch-handle {
+  left: 74px;
+}
+ 
+/* Transition
+========================== */
+.switch-label, .switch-handle {
+  transition: All 0.3s ease;
+  -webkit-transition: All 0.3s ease;
+  -moz-transition: All 0.3s ease;
+  -o-transition: All 0.3s ease;
+}
+.switch-slide {
+  padding: 0;
+  margin: 15px 0 0;
+  background: #FFF;
+  border-radius: 0;
+  background-image: none;
+}
+.switch-slide .switch-label {
+  box-shadow: none;
+  background: none;
+  overflow: hidden;
+}
+.switch-slide .switch-label:after, .switch-slide .switch-label:before {
+  width: 100%;
+  height: 65%;
+  top: 5px;
+  left: 0;
+  text-align: center;
+  padding-top: 10%;
+}
+.switch-slide .switch-label:after {
+  color: #FFFFFF;
+  background: #b7b7b7;
+  left: -100px;
+}
+.switch-slide .switch-label:before {
+  background: #39ca74;
+  color: #FFFFFF;
+}
+.switch-slide .switch-handle {
+  display: none;
+}
+.switch-slide .switch-input:checked ~ .switch-label {
+  background: #FFF;
+  border-color: #0088cc;
+}
+.switch-slide .switch-input:checked ~ .switch-label:before {
+  left: 100px;
+}
+.switch-slide .switch-input:checked ~ .switch-label:after {
+  left: 0;
 }
