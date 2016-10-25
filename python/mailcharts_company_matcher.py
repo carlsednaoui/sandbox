@@ -3,7 +3,7 @@ import csv
 from difflib import SequenceMatcher
 from itertools import islice
 
-CSV_PATH = '/Users/carl/Desktop/results.csv'
+CSV_PATH = '/Users/carl/Desktop/companies.csv'
 
 # define similarity function
 def similar (a, b):
@@ -14,12 +14,13 @@ def similar (a, b):
 # print similar('Oasis Clothing UK', 'Oasis Fashions')
 
 # load csv
-with open(CSV_PATH, 'rb') as csvfile:
+with open(CSV_PATH, newline='') as csvfile:
   reader = csv.reader(csvfile, delimiter=',')
   for row in reader:
     top = 0 #save the top score
     main_company = row[1] #grab the company we want
-    print main_company
+    print(main_company)
+    
 
 
 
