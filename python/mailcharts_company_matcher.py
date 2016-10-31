@@ -1,5 +1,6 @@
 import csv
 import pprint
+import re
 # import pandas as pd
 from difflib import SequenceMatcher
 from itertools import islice
@@ -15,10 +16,13 @@ def similar (a, b):
 # print similar('apple', 'Apple')
 # print similar('Oasis Clothing UK', 'Oasis Fashions')
 
+def clean(company):
+  return re.sub("\.com|the |store|coffee", "", company)
+
 # load csv
-with open(CSV_PATH, newline='') as csvfile:
+with open(CSV_PATH, encoding='mac_roman', newline='') as csvfile:
   reader = csv.reader(csvfile, delimiter=',')
-  
+
   # save all the data to a list, we're dealing with small numbers
   data = list(reader)
 
@@ -29,8 +33,15 @@ with open(CSV_PATH, newline='') as csvfile:
     for _row in data:
       if row == _row:
         continue
-      similarity = similar(row[1], _row[1])
-      if similarity > 0.7:
+      similarity = similar(clean(row[1]), clean(_row[1]))
+      if similarity > 0.8:
+        print([
+            row[0], #company_id
+            _row[0], #match_id
+            similarity, #similarity
+            row[1], #original_name
+            _row[1] #compared_name
+          ])
         results.append(
           [
             row[0], #company_id
