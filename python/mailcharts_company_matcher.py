@@ -51,11 +51,8 @@ with open(CSV_PATH, newline='') as csvfile:
     w.writerow(headers)
     for result in results:
       w.writerow(result)
-    
 
-
-
-# use pandas
-# df = pd.read_csv(CSV_PATH)
-# saved_column = df['Name']
-# print saved_column
+####
+#  optimizations:
+## for each match, there is now two rows ([a,b], [b,a])
+####
